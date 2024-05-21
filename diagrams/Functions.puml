@@ -1,0 +1,89 @@
+@startuml
+
+interface Visitable{
++accept(v: Visitor): void
+}
+interface Visitor{
++visit(f: Function): void
++visit(p: Parameter): void
++visit(o: Operation): void
+}
+
+class Printer implements Visitor{
+}
+
+
+interface Function extends Visitable{
+}
+class VariableFunction implements Function{
+-variable: Parameter
+}
+class NonVariableFunction implements Function{
+}
+
+interface Parameter extends Visitable{
++setValue(p: Parameter): void
+}
+
+class MultipleParameter implements Parameter{
+-parameters: List<Parameter>
+}
+
+class SingleParameter implements Parameter{
+-parameter: Parameter
+}
+
+class Constant implements Parameter{
+-value: Number
+}
+
+interface Operation extends Visitable{
++solve(): Number
+}
+
+abstract class SingleParameterOperation extends Operation{
+-parameter: Parameter
++solve(): Number
+}
+
+abstract class DoubleParameterOperation extends Operation{
+-first: Parameter
+-second: Parameter
++solve(): Number
+}
+
+class Addition extends DoubleParameterOperation{
++solve(): Number
+}
+class Subtraction extends DoubleParameterOperation{
++solve(): Number
+}
+class Multiplication extends DoubleParameterOperation{
++solve(): Number
+}
+class Division extends DoubleParameterOperation{
++solve(): Number
+}
+class Power extends DoubleParameterOperation{
++solve(): Number
+}
+
+class AbsoluteValue extends SingleParameterOperation{
++solve(): Number
+}
+class SquareRoot extends SingleParameterOperation{
++solve(): Number
+}
+
+
+
+
+
+' Functions receive ONE WORD OR LETTER,
+' then they are single-variable
+
+' Extras
+Visitable <-Visitor
+
+
+@enduml
