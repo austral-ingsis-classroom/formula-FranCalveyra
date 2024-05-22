@@ -1,13 +1,21 @@
 package edu.austral.ingsis.math.visitable.parameter;
 
-public class Constant implements Parameter{
-    private Number value;
-    public Constant(Number val){
-        value = val;
-    }
+import edu.austral.ingsis.math.utils.MathNumber;
 
-    @Override
-    public void setValue(Parameter parameter) {
-        //TODO: implement
-    }
+public class Constant implements Parameter {
+  private MathNumber value;
+
+  public Constant(MathNumber val) {
+    value = val;
+  }
+
+  @Override
+  public MathNumber getValue() {
+    return value;
+  }
+
+  @Override
+  public void setValue(MathNumber value) {
+    this.value = value;
+  }
 }

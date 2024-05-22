@@ -1,5 +1,7 @@
 package edu.austral.ingsis.math.visitable.function;
 
-public interface Function {
-    Number eval();
+import edu.austral.ingsis.math.visitable.Visitable;
+
+public interface Function extends Visitable {
+  Number eval();
 }

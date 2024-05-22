@@ -4,17 +4,31 @@ interface Visitable{
 +accept(v: Visitor): void
 }
 interface Visitor{
-+visit(f: Function): void
-+visit(p: Parameter): void
-+visit(o: Operation): void
++visit(f: VariableFunction): void
++visit(f: NonVariableFunction): void
++visit(p: MultipleParameter): void
++visit(p: SingleParameter): void
++visit(p: Constant): void
++visit(o: AbsoluteValue): void
++visit(o: SquareRoot): void
++visit(o: Addition): void
++visit(o: Subtraction): void
++visit(o: Multiplication): void
 }
 
 'TODO: Determine if visiting bottom classes is needed
 
 class Printer implements Visitor{
-+visit(f: Function): void
-+visit(p: Parameter): void
-+visit(o: Operation): void
++visit(f: VariableFunction): void
++visit(f: NonVariableFunction): void
++visit(p: MultipleParameter): void
++visit(p: SingleParameter): void
++visit(p: Constant): void
++visit(o: AbsoluteValue): void
++visit(o: SquareRoot): void
++visit(o: Addition): void
++visit(o: Subtraction): void
++visit(o: Multiplication): void
 }
 
 
@@ -49,12 +63,12 @@ interface Operation extends Visitable{
 +solve(p: Parameter): Number
 }
 
-abstract class UnaryOperation extends Operation{
+abstract class UnaryOperation implements Operation{
 -parameter: Parameter
 +solve(p: Parameter): Number
 }
 
-abstract class BinaryOperation extends Operation{
+abstract class BinaryOperation implements Operation{
 -first: Parameter
 -second: Parameter
 +solve(p: Parameter): Number

@@ -1,9 +1,13 @@
 package edu.austral.ingsis.math.visitable.operation.binary;
 
-public class Addition extends BinaryOperation{
-    @Override
-    public Number solve() {
-        //TODO: implement
-        return null;
-    }
+import edu.austral.ingsis.math.visitor.Visitor;
+
+public class Addition extends BinaryOperation {
+  @Override
+  public void accept(Visitor visitor) {}
+
+  @Override
+  public Double solve() {
+    return first.getValue().doubleValue() + second.getValue().doubleValue();
+  }
 }
