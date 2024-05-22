@@ -9,16 +9,24 @@ interface Visitor{
 +visit(o: Operation): void
 }
 
+'TODO: Determine if visiting bottom classes is needed
+
 class Printer implements Visitor{
++visit(f: Function): void
++visit(p: Parameter): void
++visit(o: Operation): void
 }
 
 
 interface Function extends Visitable{
++eval(): Number
 }
 class VariableFunction implements Function{
 -variable: Parameter
++eval(): Number
 }
 class NonVariableFunction implements Function{
++eval(): Number
 }
 
 interface Parameter extends Visitable{
