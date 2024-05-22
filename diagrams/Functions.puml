@@ -38,7 +38,7 @@ class MultipleParameter implements Parameter{
 }
 
 class SingleParameter implements Parameter{
--parameter: Parameter
+-representation: String
 }
 
 class Constant implements Parameter{
@@ -46,41 +46,41 @@ class Constant implements Parameter{
 }
 
 interface Operation extends Visitable{
-+solve(): Number
++solve(p: Parameter): Number
 }
 
-abstract class SingleParameterOperation extends Operation{
+abstract class UnaryOperation extends Operation{
 -parameter: Parameter
-+solve(): Number
++solve(p: Parameter): Number
 }
 
-abstract class DoubleParameterOperation extends Operation{
+abstract class BinaryOperation extends Operation{
 -first: Parameter
 -second: Parameter
-+solve(): Number
++solve(p: Parameter): Number
 }
 
-class Addition extends DoubleParameterOperation{
-+solve(): Number
+class Addition extends BinaryOperation{
++solve(p: Parameter): Number
 }
-class Subtraction extends DoubleParameterOperation{
-+solve(): Number
+class Subtraction extends BinaryOperation{
++solve(p: Parameter): Number
 }
-class Multiplication extends DoubleParameterOperation{
-+solve(): Number
+class Multiplication extends BinaryOperation{
++solve(p: Parameter): Number
 }
-class Division extends DoubleParameterOperation{
-+solve(): Number
+class Division extends BinaryOperation{
++solve(p: Parameter): Number
 }
-class Power extends DoubleParameterOperation{
-+solve(): Number
+class Power extends BinaryOperation{
++solve(p: Parameter): Number
 }
 
-class AbsoluteValue extends SingleParameterOperation{
-+solve(): Number
+class AbsoluteValue extends UnaryOperation{
++solve(p: Parameter): Number
 }
-class SquareRoot extends SingleParameterOperation{
-+solve(): Number
+class SquareRoot extends UnaryOperation{
++solve(p: Parameter): Number
 }
 
 
