@@ -2,20 +2,25 @@ package edu.austral.ingsis.math.visitor;
 
 import edu.austral.ingsis.math.visitable.function.NonVariableFunction;
 import edu.austral.ingsis.math.visitable.function.VariableFunction;
-import edu.austral.ingsis.math.visitable.operation.binary.Addition;
-import edu.austral.ingsis.math.visitable.operation.binary.Product;
-import edu.austral.ingsis.math.visitable.operation.binary.Subtraction;
+import edu.austral.ingsis.math.visitable.operation.binary.*;
 import edu.austral.ingsis.math.visitable.operation.unary.AbsoluteValue;
 import edu.austral.ingsis.math.visitable.operation.unary.SquareRoot;
 import edu.austral.ingsis.math.visitable.parameter.Constant;
+import edu.austral.ingsis.math.visitable.parameter.Variable;
 
 public interface Visitor {
+
+  // Function visits
   void visit(VariableFunction o);
 
   void visit(NonVariableFunction o);
 
+  // Parameters visits
   void visit(Constant o);
 
+  void visit(Variable o);
+
+  // Operation visits
   void visit(AbsoluteValue o);
 
   void visit(SquareRoot o);
@@ -25,5 +30,8 @@ public interface Visitor {
   void visit(Subtraction o);
 
   void visit(Product o);
-  // TODO: use the rest of actual CLASSES, not interface delegations
+
+  void visit(Power o);
+
+  void visit(Division o);
 }

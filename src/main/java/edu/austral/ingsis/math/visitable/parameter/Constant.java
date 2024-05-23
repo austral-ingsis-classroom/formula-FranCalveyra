@@ -1,6 +1,7 @@
 package edu.austral.ingsis.math.visitable.parameter;
 
 import edu.austral.ingsis.math.utils.MathNumber;
+import edu.austral.ingsis.math.visitor.Visitor;
 
 public class Constant implements Parameter {
   private MathNumber value;
@@ -17,5 +18,10 @@ public class Constant implements Parameter {
   @Override
   public void setValue(MathNumber value) {
     this.value = value;
+  }
+
+  @Override
+  public void accept(Visitor visitor) {
+    visitor.visit(this);
   }
 }

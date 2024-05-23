@@ -3,14 +3,14 @@ package edu.austral.ingsis.math.visitable.function;
 import edu.austral.ingsis.math.visitor.Visitor;
 
 public class NonVariableFunction implements Function {
-  private final Number constantValue;
+  private final Double constantValue;
 
-  public NonVariableFunction(Number value) {
+  public NonVariableFunction(Double value) {
     this.constantValue = value;
   }
 
   @Override
-  public Number eval() {
+  public Double eval() {
     return constantValue;
   }
 
