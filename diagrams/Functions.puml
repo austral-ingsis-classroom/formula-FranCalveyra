@@ -1,5 +1,5 @@
 @startuml
-
+' TODO: update this diagram to final version
 interface Visitable{
 +accept(v: Visitor): void
 }
@@ -15,8 +15,6 @@ interface Visitor{
 +visit(o: Subtraction): void
 +visit(o: Multiplication): void
 }
-
-'TODO: Determine if visiting bottom classes is needed
 
 class Printer implements Visitor{
 +visit(f: VariableFunction): void

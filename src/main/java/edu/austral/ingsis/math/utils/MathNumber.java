@@ -9,6 +9,11 @@ public class MathNumber extends Number {
   }
 
   @Override
+  public String toString() {
+    return value.toString();
+  }
+
+  @Override
   public int intValue() {
     return value.intValue();
   }

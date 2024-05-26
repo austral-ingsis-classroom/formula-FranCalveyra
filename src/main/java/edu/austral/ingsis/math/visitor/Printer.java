@@ -9,50 +9,66 @@ import edu.austral.ingsis.math.visitable.parameter.Constant;
 import edu.austral.ingsis.math.visitable.parameter.Variable;
 
 public class Printer implements Visitor {
+  private String lastVisitedValue;
+
   @Override
   public void visit(VariableFunction o) {
-    System.out.println(o.getRepresentation());
+    lastVisitedValue = o.toString();
   }
 
   @Override
   public void visit(NonVariableFunction o) {
-    System.out.println(o.eval());
+    lastVisitedValue = o.toString();
   }
 
   @Override
   public void visit(Constant o) {
-    System.out.println(o.getValue());
+    lastVisitedValue = o.toString();
   }
 
   @Override
   public void visit(Variable o) {
-    System.out.println(o.getVariableName());
+    lastVisitedValue = o.toString();
   }
-  //TODO: implement operation visits
+
   @Override
   public void visit(AbsoluteValue o) {
-    System.out.println();
+    lastVisitedValue = o.toString();
   }
 
   @Override
   public void visit(SquareRoot o) {
-    System.out.println();
+
+    lastVisitedValue = o.toString();
   }
 
   @Override
   public void visit(Addition o) {
-    System.out.println();
+
+    lastVisitedValue = o.toString();
   }
 
   @Override
-  public void visit(Subtraction o) {}
+  public void visit(Subtraction o) {
+    lastVisitedValue = o.toString();
+  }
 
   @Override
-  public void visit(Product o) {}
+  public void visit(Product o) {
+    lastVisitedValue = o.toString();
+  }
 
   @Override
-  public void visit(Power o) {}
+  public void visit(Power o) {
+    lastVisitedValue = o.toString();
+  }
 
   @Override
-  public void visit(Division o) {}
+  public void visit(Division o) {
+    lastVisitedValue = o.toString();
+  }
+
+  public String getLastVisitedValue() {
+    return lastVisitedValue;
+  }
 }
