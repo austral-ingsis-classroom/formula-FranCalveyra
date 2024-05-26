@@ -38,13 +38,11 @@ public class Printer implements Visitor {
 
   @Override
   public void visit(SquareRoot o) {
-
     lastVisitedValue = o.toString();
   }
 
   @Override
   public void visit(Addition o) {
-
     lastVisitedValue = o.toString();
   }
 

@@ -7,11 +7,6 @@ public class Variable implements Parameter {
   private final String variableName;
   private MathNumber value;
 
-  public Variable(String variableName, MathNumber value) {
-    this.value = value;
-    this.variableName = variableName;
-  }
-
   public Variable(String variableName) {
     this.variableName = variableName;
     value = null;

@@ -4,7 +4,6 @@ import edu.austral.ingsis.math.visitable.operation.Operation;
 import edu.austral.ingsis.math.visitable.parameter.Parameter;
 import edu.austral.ingsis.math.visitable.parameter.Variable;
 import edu.austral.ingsis.math.visitor.Visitor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,18 +26,16 @@ public class VariableFunction implements Function {
 
   @Override
   public Double eval() {
-    return operation.solve();
+    return operation != null ? operation.solve() : parameter.getValue().doubleValue();
   }
 
   @Override
   public List<String> listVariables() {
-    if(operation != null){
-      List<String> variables = getOperationVariables(operation);
-      System.out.println(variables);
-      return variables;
+    if (operation != null) {
+      return getOperationVariables(operation);
     }
-    if(parameter != null){
-      if(parameter instanceof Variable){
+    if (parameter != null) {
+      if (parameter instanceof Variable) {
         return List.of(parameter.toString());
       }
     }
@@ -55,20 +52,22 @@ public class VariableFunction implements Function {
     boolean cond = isBetweenParenthesis(representation);
     return cond ? representation.substring(1, representation.length() - 1) : representation;
   }
+
   private boolean isBetweenParenthesis(String representation) {
-    return representation.charAt(0) == '(' && representation.charAt(representation.length() - 1) == ')';
+    return representation.charAt(0) == '('
+        && representation.charAt(representation.length() - 1) == ')';
   }
+
   private List<String> getOperationVariables(Operation operation) {
     List<String> variables = new ArrayList<>();
     for (Parameter parameter : operation.getParameters()) {
       if (parameter instanceof Operation) {
         variables.addAll(getOperationVariables((Operation) parameter));
       }
-      if(parameter instanceof Variable){
+      if (parameter instanceof Variable) {
         variables.add((parameter).toString());
       }
     }
     return variables;
   }
-
 }

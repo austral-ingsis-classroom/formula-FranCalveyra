@@ -1,6 +1,5 @@
 package edu.austral.ingsis.math.visitable.operation.unary;
 
-import edu.austral.ingsis.math.utils.MathNumber;
 import edu.austral.ingsis.math.visitable.parameter.Parameter;
 import edu.austral.ingsis.math.visitor.Visitor;
 

@@ -4,7 +4,6 @@ import edu.austral.ingsis.math.utils.MathNumber;
 import edu.austral.ingsis.math.visitable.operation.Operation;
 import edu.austral.ingsis.math.visitable.parameter.Parameter;
 import edu.austral.ingsis.math.visitor.Visitor;
-
 import java.util.List;
 
 public abstract class BinaryOperation implements Operation {
@@ -37,9 +36,9 @@ public abstract class BinaryOperation implements Operation {
   public void setValue(MathNumber value) {
     return;
   }
+
   @Override
   public List<Parameter> getParameters() {
     return List.of(first, second);
   }
-
 }
