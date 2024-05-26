@@ -6,6 +6,7 @@ import edu.austral.ingsis.math.utils.MathNumber;
 import edu.austral.ingsis.math.visitable.function.NonVariableFunction;
 import edu.austral.ingsis.math.visitable.function.VariableFunction;
 import edu.austral.ingsis.math.visitable.operation.binary.*;
+import edu.austral.ingsis.math.visitable.operation.unary.AbsoluteValue;
 import edu.austral.ingsis.math.visitable.operation.unary.SquareRoot;
 import edu.austral.ingsis.math.visitable.parameter.Constant;
 import edu.austral.ingsis.math.visitable.parameter.Variable;
@@ -135,6 +136,19 @@ public class VisitorTest {
     final NonVariableFunction function =
         new NonVariableFunction(
             new Addition(new Constant(new MathNumber(3)), new Constant(new MathNumber(1))));
+    printer.visit(function);
+    assertEquals(expected, printer.getLastVisitedValue());
+    Printer otherPrinter = new Printer();
+    function.accept(otherPrinter);
+    assertEquals(expected, otherPrinter.getLastVisitedValue());
+  }
+  @Test
+  public void absoluteValueVisitTest() {
+    final String expected = "|(3 + 1)|";
+    final Printer printer = new Printer();
+    final NonVariableFunction function =
+      new NonVariableFunction(
+        new AbsoluteValue(new Addition(new Constant(new MathNumber(3)), new Constant(new MathNumber(1)))));
     printer.visit(function);
     assertEquals(expected, printer.getLastVisitedValue());
     Printer otherPrinter = new Printer();
