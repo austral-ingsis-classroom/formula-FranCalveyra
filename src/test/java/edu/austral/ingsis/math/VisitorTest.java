@@ -142,13 +142,15 @@ public class VisitorTest {
     function.accept(otherPrinter);
     assertEquals(expected, otherPrinter.getLastVisitedValue());
   }
+
   @Test
   public void absoluteValueVisitTest() {
     final String expected = "|(3 + 1)|";
     final Printer printer = new Printer();
     final NonVariableFunction function =
-      new NonVariableFunction(
-        new AbsoluteValue(new Addition(new Constant(new MathNumber(3)), new Constant(new MathNumber(1)))));
+        new NonVariableFunction(
+            new AbsoluteValue(
+                new Addition(new Constant(new MathNumber(3)), new Constant(new MathNumber(1)))));
     printer.visit(function);
     assertEquals(expected, printer.getLastVisitedValue());
     Printer otherPrinter = new Printer();
