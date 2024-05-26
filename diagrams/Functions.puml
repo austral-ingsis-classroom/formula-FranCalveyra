@@ -1,5 +1,4 @@
 @startuml
-' TODO: update this diagram to final version
 interface Visitable{
 +accept(v: Visitor): void
 }
@@ -13,89 +12,122 @@ interface Visitor{
 +visit(o: SquareRoot): void
 +visit(o: Addition): void
 +visit(o: Subtraction): void
-+visit(o: Multiplication): void
++visit(o: Product): void
 }
 
 class Printer implements Visitor{
 +visit(f: VariableFunction): void
 +visit(f: NonVariableFunction): void
-+visit(p: MultipleParameter): void
-+visit(p: SingleParameter): void
++visit(p: Variable): void
 +visit(p: Constant): void
 +visit(o: AbsoluteValue): void
 +visit(o: SquareRoot): void
 +visit(o: Addition): void
 +visit(o: Subtraction): void
-+visit(o: Multiplication): void
++visit(o: Product): void
 }
 
 
 interface Function extends Visitable{
-+eval(): Number
++eval(): Double
++listVariables(): List<String>
 }
 class VariableFunction implements Function{
 -variable: Parameter
-+eval(): Number
+-operation: Operation
++eval(): Double
++listVariables(): List<String>
++accept(v: Visitor): void
 }
 class NonVariableFunction implements Function{
-+eval(): Number
+-operation: Operation
++eval(): Double
++listVariables(): List<String>
++accept(v: Visitor): void
 }
 
 interface Parameter extends Visitable{
-+setValue(p: Parameter): void
++getValue(): MathNumber
++setValue(value: MathNumber): void
 }
 
-class MultipleParameter implements Parameter{
--parameters: List<Parameter>
-}
-
-class SingleParameter implements Parameter{
--representation: String
+class Variable implements Parameter{
+-variableName: String
+-value: MathNumber
++getValue(): MathNumber
++setValue(value: MathNumber): void
 }
 
 class Constant implements Parameter{
--value: Number
+-value: MathNumber
++getValue(): MathNumber
++setValue(value: MathNumber): void
 }
 
-interface Operation extends Visitable{
-+solve(p: Parameter): Number
+interface Operation extends Visitable, Parameter{
++solve(): Double
 }
 
 abstract class UnaryOperation implements Operation{
 -parameter: Parameter
-+solve(p: Parameter): Number
++solve(): Double
++accept(v: Visitor): void
++getValue(): MathNumber
++setValue(value: MathNumber): void
 }
 
 abstract class BinaryOperation implements Operation{
 -first: Parameter
 -second: Parameter
-+solve(p: Parameter): Number
+-operand: String
++solve(): Double
++accept(v: Visitor): void
++getValue(): MathNumber
++setValue(value: MathNumber): void
 }
 
 class Addition extends BinaryOperation{
-+solve(p: Parameter): Number
++solve(): Double
++accept(v: Visitor): void
 }
 class Subtraction extends BinaryOperation{
-+solve(p: Parameter): Number
++solve(): Double
++accept(v: Visitor): void
 }
-class Multiplication extends BinaryOperation{
-+solve(p: Parameter): Number
+class Product extends BinaryOperation{
++solve(): Double
++accept(v: Visitor): void
 }
 class Division extends BinaryOperation{
-+solve(p: Parameter): Number
++solve(): Double
++accept(v: Visitor): void
 }
 class Power extends BinaryOperation{
-+solve(p: Parameter): Number
++solve(): Double
++accept(v: Visitor): void
 }
 
 class AbsoluteValue extends UnaryOperation{
-+solve(p: Parameter): Number
++solve(): Double
++accept(v: Visitor): void
 }
 class SquareRoot extends UnaryOperation{
-+solve(p: Parameter): Number
++solve(): Double
++accept(v: Visitor): void
 }
 
+class Number {
+//Java built-in Number class
+}
 
+class MathNumber extends Number{
+-value: Number
++toString(): String
++intValue(): int
++longValue(): long
++floatValue(): float
++doubleValue(): double
+}
 
 
 
@@ -104,6 +136,8 @@ class SquareRoot extends UnaryOperation{
 
 ' Extras
 Visitable <-Visitor
+Variable o-- MathNumber
+Constant o-- MathNumber
 
 
 @enduml
