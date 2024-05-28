@@ -17,15 +17,12 @@ public abstract class BinaryOperation implements Operation {
   }
 
   @Override
-  public abstract void accept(Visitor visitor);
+  public void accept(Visitor visitor){
+    visitor.visit(this);
+  };
 
   @Override
   public abstract Double solve();
-
-  @Override
-  public String toString() {
-    return "(" + first.toString() + " " + operand + " " + second.toString() + ")";
-  }
 
   @Override
   public MathNumber getValue() {
@@ -40,5 +37,15 @@ public abstract class BinaryOperation implements Operation {
   @Override
   public List<Parameter> getParameters() {
     return List.of(first, second);
+  }
+
+  public Parameter getFirst(){
+    return first;
+  }
+  public Parameter getSecond(){
+    return second;
+  }
+  public String getOperand() {
+    return operand;
   }
 }

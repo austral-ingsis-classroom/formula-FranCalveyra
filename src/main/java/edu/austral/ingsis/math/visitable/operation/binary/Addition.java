@@ -1,7 +1,6 @@
 package edu.austral.ingsis.math.visitable.operation.binary;
 
 import edu.austral.ingsis.math.visitable.parameter.Parameter;
-import edu.austral.ingsis.math.visitor.Visitor;
 
 public class Addition extends BinaryOperation {
   public Addition(Parameter first, Parameter second) {
@@ -10,17 +9,8 @@ public class Addition extends BinaryOperation {
   }
 
   @Override
-  public void accept(Visitor visitor) {
-    visitor.visit(this);
-  }
-
-  @Override
   public Double solve() {
     return first.getValue().doubleValue() + second.getValue().doubleValue();
   }
 
-  @Override
-  public String toString() {
-    return super.toString();
-  }
 }

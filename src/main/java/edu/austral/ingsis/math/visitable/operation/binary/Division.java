@@ -10,11 +10,6 @@ public class Division extends BinaryOperation {
   }
 
   @Override
-  public void accept(Visitor visitor) {
-    visitor.visit(this);
-  }
-
-  @Override
   public Double solve() {
     try {
       return first.getValue().doubleValue() / second.getValue().doubleValue();
@@ -22,10 +17,5 @@ public class Division extends BinaryOperation {
       System.out.println("Cannot divide by zero");
       return 0.0;
     }
-  }
-
-  @Override
-  public String toString() {
-    return super.toString();
   }
 }

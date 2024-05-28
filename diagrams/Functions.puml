@@ -5,14 +5,10 @@ interface Visitable{
 interface Visitor{
 +visit(f: VariableFunction): void
 +visit(f: NonVariableFunction): void
-+visit(p: MultipleParameter): void
-+visit(p: SingleParameter): void
++visit(p: Variable): void
 +visit(p: Constant): void
-+visit(o: AbsoluteValue): void
-+visit(o: SquareRoot): void
-+visit(o: Addition): void
-+visit(o: Subtraction): void
-+visit(o: Product): void
++visit(bin: BinaryOperation): void
++visit(un: UnaryOperation): void
 }
 
 class Printer implements Visitor{
@@ -20,11 +16,8 @@ class Printer implements Visitor{
 +visit(f: NonVariableFunction): void
 +visit(p: Variable): void
 +visit(p: Constant): void
-+visit(o: AbsoluteValue): void
-+visit(o: SquareRoot): void
-+visit(o: Addition): void
-+visit(o: Subtraction): void
-+visit(o: Product): void
++visit(bin: BinaryOperation): void
++visit(un: UnaryOperation): void
 }
 
 
@@ -38,12 +31,14 @@ class VariableFunction implements Function{
 +eval(): Double
 +listVariables(): List<String>
 +accept(v: Visitor): void
++getOperation(): Operation
 }
 class NonVariableFunction implements Function{
 -operation: Operation
 +eval(): Double
 +listVariables(): List<String>
 +accept(v: Visitor): void
++getOperation(): Operation
 }
 
 interface Parameter extends Visitable{
@@ -56,12 +51,14 @@ class Variable implements Parameter{
 -value: MathNumber
 +getValue(): MathNumber
 +setValue(value: MathNumber): void
++getVariable(): String
 }
 
 class Constant implements Parameter{
 -value: MathNumber
 +getValue(): MathNumber
 +setValue(value: MathNumber): void
++getValueString(): String
 }
 
 interface Operation extends Visitable, Parameter{
@@ -74,6 +71,7 @@ abstract class UnaryOperation implements Operation{
 +accept(v: Visitor): void
 +getValue(): MathNumber
 +setValue(value: MathNumber): void
++getParameter(): Parameter
 }
 
 abstract class BinaryOperation implements Operation{
@@ -84,27 +82,25 @@ abstract class BinaryOperation implements Operation{
 +accept(v: Visitor): void
 +getValue(): MathNumber
 +setValue(value: MathNumber): void
++getFirst(): Parameter
++getSecond(): Parameter
++getOperand(): String
 }
 
 class Addition extends BinaryOperation{
 +solve(): Double
-+accept(v: Visitor): void
 }
 class Subtraction extends BinaryOperation{
 +solve(): Double
-+accept(v: Visitor): void
 }
 class Product extends BinaryOperation{
 +solve(): Double
-+accept(v: Visitor): void
 }
 class Division extends BinaryOperation{
 +solve(): Double
-+accept(v: Visitor): void
 }
 class Power extends BinaryOperation{
 +solve(): Double
-+accept(v: Visitor): void
 }
 
 class AbsoluteValue extends UnaryOperation{

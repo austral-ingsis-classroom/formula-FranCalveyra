@@ -22,9 +22,4 @@ public class SquareRoot extends UnaryOperation {
       return 0.0;
     }
   }
-
-  @Override
-  public String toString() {
-    return parameter.toString() + " ^ (1/2)";
-  }
 }

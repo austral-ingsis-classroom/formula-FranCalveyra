@@ -10,17 +10,8 @@ public class Product extends BinaryOperation {
   }
 
   @Override
-  public void accept(Visitor visitor) {
-    visitor.visit(this);
-  }
-
-  @Override
   public Double solve() {
     return first.getValue().doubleValue() * second.getValue().doubleValue();
   }
 
-  @Override
-  public String toString() {
-    return super.toString();
-  }
 }

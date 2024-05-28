@@ -30,8 +30,7 @@ public class Variable implements Parameter {
     visitor.visit(this);
   }
 
-  @Override
-  public String toString() {
-    return variableName;
+  public String getVariable() {
+    return value == null ? variableName: value.toString();
   }
 }

@@ -33,4 +33,8 @@ public abstract class UnaryOperation implements Operation {
   public List<Parameter> getParameters() {
     return List.of(parameter);
   }
+
+  public Parameter getParameter() {
+    return parameter;
+  }
 }

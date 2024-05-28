@@ -5,6 +5,5 @@ import java.util.List;
 
 public interface Function extends Visitable {
   Double eval();
-
   List<String> listVariables();
 }

@@ -7,11 +7,9 @@ import java.util.List;
 
 public class NonVariableFunction implements Function {
   private final Operation operation;
-  private final String representation;
 
   public NonVariableFunction(Parameter operation) {
     this.operation = (Operation) operation;
-    this.representation = operation.toString();
   }
 
   @Override
@@ -29,14 +27,7 @@ public class NonVariableFunction implements Function {
     visitor.visit(this);
   }
 
-  @Override
-  public String toString() {
-    boolean cond = isBetweenParenthesis(representation);
-    return cond ? representation.substring(1, representation.length() - 1) : representation;
-  }
-
-  private boolean isBetweenParenthesis(String representation) {
-    return representation.charAt(0) == '('
-        && representation.charAt(representation.length() - 1) == ')';
+  public Operation getOperation() {
+    return operation;
   }
 }

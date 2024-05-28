@@ -10,17 +10,7 @@ public class Power extends BinaryOperation {
   }
 
   @Override
-  public void accept(Visitor visitor) {
-    visitor.visit(this);
-  }
-
-  @Override
   public Double solve() {
     return Math.pow(first.getValue().doubleValue(), second.getValue().doubleValue());
-  }
-
-  @Override
-  public String toString() {
-    return super.toString();
   }
 }
