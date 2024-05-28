@@ -17,20 +17,22 @@ public class Printer implements Visitor {
     o.getOperation().accept(this);
     String representation = lastVisitedValue;
     boolean cond = isBetweenParenthesis(representation);
-    lastVisitedValue = cond ? representation.substring(1, representation.length() - 1) : representation;
+    lastVisitedValue =
+        cond ? representation.substring(1, representation.length() - 1) : representation;
   }
 
-private boolean isBetweenParenthesis(String representation) {
-  return representation.charAt(0) == '('
-    && representation.charAt(representation.length() - 1) == ')';
-}
+  private boolean isBetweenParenthesis(String representation) {
+    return representation.charAt(0) == '('
+        && representation.charAt(representation.length() - 1) == ')';
+  }
 
   @Override
   public void visit(NonVariableFunction o) {
     o.getOperation().accept(this);
-    String representation = lastVisitedValue ;
+    String representation = lastVisitedValue;
     boolean cond = isBetweenParenthesis(representation);
-    lastVisitedValue = cond ? representation.substring(1, representation.length() - 1) : representation;
+    lastVisitedValue =
+        cond ? representation.substring(1, representation.length() - 1) : representation;
   }
 
   @Override
@@ -53,7 +55,8 @@ private boolean isBetweenParenthesis(String representation) {
     Printer secondPrinter = new Printer();
     second.accept(secondPrinter);
 
-    lastVisitedValue = "(" + printer.lastVisitedValue + " " + operand + " " + secondPrinter.lastVisitedValue + ")";
+    lastVisitedValue =
+        "(" + printer.lastVisitedValue + " " + operand + " " + secondPrinter.lastVisitedValue + ")";
   }
 
   @Override

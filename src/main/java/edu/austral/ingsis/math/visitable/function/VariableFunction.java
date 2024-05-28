@@ -25,7 +25,9 @@ public class VariableFunction implements Function {
 
   @Override
   public Double eval() {
-    return operation != null ? operation.solve() : Objects.requireNonNull(parameter).getValue().doubleValue();
+    return operation != null
+        ? operation.solve()
+        : Objects.requireNonNull(parameter).getValue().doubleValue();
   }
 
   @Override

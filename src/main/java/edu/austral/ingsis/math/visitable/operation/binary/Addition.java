@@ -12,5 +12,4 @@ public class Addition extends BinaryOperation {
   public Double solve() {
     return first.getValue().doubleValue() + second.getValue().doubleValue();
   }
-
 }

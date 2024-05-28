@@ -31,6 +31,6 @@ public class Variable implements Parameter {
   }
 
   public String getVariable() {
-    return value == null ? variableName: value.toString();
+    return value == null ? variableName : value.toString();
   }
 }

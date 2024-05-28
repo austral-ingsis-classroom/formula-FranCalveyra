@@ -1,7 +1,6 @@
 package edu.austral.ingsis.math.visitable.operation.binary;
 
 import edu.austral.ingsis.math.visitable.parameter.Parameter;
-import edu.austral.ingsis.math.visitor.Visitor;
 
 public class Division extends BinaryOperation {
   public Division(Parameter first, Parameter second) {

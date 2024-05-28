@@ -25,7 +25,7 @@ public class Constant implements Parameter {
     visitor.visit(this);
   }
 
-  public String getValueString(){
+  public String getValueString() {
     return value.toString();
   }
 }
