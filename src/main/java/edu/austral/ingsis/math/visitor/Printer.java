@@ -37,7 +37,8 @@ public class Printer implements Visitor {
 
   @Override
   public void visit(Constant o) {
-    lastVisitedValue = o.getValueString();
+    String representation = o.getValueString();
+    lastVisitedValue = representation.substring(0, representation.length() - 2);
   }
 
   @Override

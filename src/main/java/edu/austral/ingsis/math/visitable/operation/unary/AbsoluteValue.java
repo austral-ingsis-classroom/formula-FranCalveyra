@@ -15,6 +15,6 @@ public class AbsoluteValue extends UnaryOperation {
 
   @Override
   public Double solve() {
-    return Math.abs(parameter.getValue().doubleValue());
+    return Math.abs(parameter.getValue());
   }
 }

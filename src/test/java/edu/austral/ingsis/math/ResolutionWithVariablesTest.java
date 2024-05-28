@@ -3,7 +3,6 @@ package edu.austral.ingsis.math;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import edu.austral.ingsis.math.utils.MathNumber;
 import edu.austral.ingsis.math.visitable.function.VariableFunction;
 import edu.austral.ingsis.math.visitable.operation.binary.*;
 import edu.austral.ingsis.math.visitable.operation.unary.AbsoluteValue;
@@ -18,8 +17,8 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction1() {
     final Variable x = new Variable("x");
-    final Addition sum = new Addition(new Constant(new MathNumber(1)), x);
-    x.setValue(new MathNumber(3));
+    final Addition sum = new Addition(new Constant(1d), x);
+    x.setValue(3d);
     final Double result = sum.solve();
     final VariableFunction function = new VariableFunction(sum);
 
@@ -31,8 +30,8 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction2() {
     final Variable div = new Variable("div");
-    final Division operation = new Division(new Constant(new MathNumber(12)), div);
-    div.setValue(new MathNumber(4));
+    final Division operation = new Division(new Constant(12d), div);
+    div.setValue(4d);
     final Double result = operation.solve();
     final VariableFunction function = new VariableFunction(operation);
 
@@ -45,11 +44,11 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction3() {
     final Variable x = new Variable("x");
     final Variable y = new Variable("y");
-    final Division innerDiv = new Division(new Constant(new MathNumber(9)), x);
+    final Division innerDiv = new Division(new Constant(9d), x);
     final Product product = new Product(innerDiv, y);
 
-    x.setValue(new MathNumber(3));
-    y.setValue(new MathNumber(4));
+    x.setValue(3d);
+    y.setValue(4d);
 
     final Double result = product.solve();
     final VariableFunction function = new VariableFunction(product);
@@ -63,11 +62,11 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction4() {
     final Variable a = new Variable("a");
     final Variable b = new Variable("b");
-    final Division innerDiv = new Division(new Constant(new MathNumber(27)), a);
+    final Division innerDiv = new Division(new Constant(27d), a);
     final Power power = new Power(innerDiv, b);
 
-    a.setValue(new MathNumber(9));
-    b.setValue(new MathNumber(3));
+    a.setValue(9d);
+    b.setValue(3d);
 
     final Double result = power.solve();
     final VariableFunction function = new VariableFunction(power);
@@ -81,7 +80,7 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction5() {
     final Variable z = new Variable("z");
     final SquareRoot sqrt = new SquareRoot(z);
-    z.setValue(new MathNumber(36));
+    z.setValue(36d);
 
     final Double result = sqrt.solve();
     final VariableFunction function = new VariableFunction(sqrt);
@@ -95,9 +94,9 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction6() {
     final Variable value = new Variable("value");
     final AbsoluteValue abs = new AbsoluteValue(value);
-    final Subtraction sub = new Subtraction(abs, new Constant(new MathNumber(8)));
+    final Subtraction sub = new Subtraction(abs, new Constant(8d));
 
-    value.setValue(new MathNumber(8));
+    value.setValue(8d);
     final Double result = sub.solve();
     final VariableFunction function = new VariableFunction(sub);
 
@@ -110,9 +109,9 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction7() {
     final Variable value = new Variable("value");
     final AbsoluteValue abs = new AbsoluteValue(value);
-    final Subtraction sub = new Subtraction(abs, new Constant(new MathNumber(8)));
+    final Subtraction sub = new Subtraction(abs, new Constant(8d));
 
-    value.setValue(new MathNumber(8));
+    value.setValue(8d);
     final Double result = sub.solve();
     final VariableFunction function = new VariableFunction(sub);
 
@@ -124,10 +123,10 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction8() {
     final Variable i = new Variable("i");
-    final Subtraction sub = new Subtraction(new Constant(new MathNumber(5)), i);
-    final Product product = new Product(sub, new Constant(new MathNumber(8)));
+    final Subtraction sub = new Subtraction(new Constant(5d), i);
+    final Product product = new Product(sub, new Constant(8d));
 
-    i.setValue(new MathNumber(2));
+    i.setValue(2d);
     final Double result = product.solve();
     final VariableFunction function = new VariableFunction(product);
 

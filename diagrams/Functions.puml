@@ -12,12 +12,25 @@ interface Visitor{
 }
 
 class Printer implements Visitor{
+-lastVisitedValue: String
 +visit(f: VariableFunction): void
 +visit(f: NonVariableFunction): void
 +visit(p: Variable): void
 +visit(p: Constant): void
 +visit(bin: BinaryOperation): void
 +visit(un: UnaryOperation): void
++getLastVisitedValue(): String
+}
+
+class VariableLister implements Visitor{
+-list: List<String>
++visit(f: VariableFunction): void
++visit(f: NonVariableFunction): void
++visit(p: Variable): void
++visit(p: Constant): void
++visit(bin: BinaryOperation): void
++visit(un: UnaryOperation): void
++getVariableList(): List<String>
 }
 
 

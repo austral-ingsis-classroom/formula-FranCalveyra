@@ -1,6 +1,5 @@
 package edu.austral.ingsis.math.visitable.operation.binary;
 
-import edu.austral.ingsis.math.utils.MathNumber;
 import edu.austral.ingsis.math.visitable.operation.Operation;
 import edu.austral.ingsis.math.visitable.parameter.Parameter;
 import edu.austral.ingsis.math.visitor.Visitor;
@@ -25,12 +24,12 @@ public abstract class BinaryOperation implements Operation {
   public abstract Double solve();
 
   @Override
-  public MathNumber getValue() {
-    return new MathNumber(solve());
+  public Double getValue() {
+    return solve();
   }
 
   @Override
-  public void setValue(MathNumber value) {}
+  public void setValue(Double value) {}
 
   @Override
   public List<Parameter> getParameters() {

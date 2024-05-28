@@ -1,11 +1,10 @@
 package edu.austral.ingsis.math.visitable.parameter;
 
-import edu.austral.ingsis.math.utils.MathNumber;
 import edu.austral.ingsis.math.visitor.Visitor;
 
 public class Variable implements Parameter {
   private final String variableName;
-  private MathNumber value;
+  private Double value;
 
   public Variable(String variableName) {
     this.variableName = variableName;
@@ -13,7 +12,7 @@ public class Variable implements Parameter {
   }
 
   @Override
-  public MathNumber getValue() {
+  public Double getValue() {
     if (value == null) {
       throw new UnsupportedOperationException("Variable has no value assigned yet");
     }
@@ -21,7 +20,7 @@ public class Variable implements Parameter {
   }
 
   @Override
-  public void setValue(MathNumber value) {
+  public void setValue(Double value) {
     this.value = value;
   }
 
